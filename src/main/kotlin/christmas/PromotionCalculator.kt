@@ -10,7 +10,6 @@ class PromotionCalculator {
         }
     }
     fun getBenefitHistory(date: Int, orders: Map<String, Int>, gift: Map<String, Int>): Map<String, Int> {
-        // 할인 및 이벤트 계산 결과를 담을 맵
         val benefits = mutableMapOf<String, Int>()
         // 크리스마스 할인
         benefits.putAll(calculateChristDiscount(date))

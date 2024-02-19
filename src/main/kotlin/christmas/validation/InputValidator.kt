@@ -1,8 +1,10 @@
 package christmas.validation
 
+import christmas.PromotionController
 import christmas.constant.Menu
 import christmas.error.DateError
 import christmas.error.OrderError
+import christmas.extension.getMenu
 import christmas.extension.isNumber
 import christmas.extension.toOrderMap
 import christmas.extension.toOrderNameList
@@ -17,6 +19,10 @@ class InputValidator {
         require(isValidateOrderFormat(input)) { OrderError.INVALID_FORMAT.message }
         require(Menu.isValidMenu(input.toOrderNameList())) { OrderError.NOT_IN_MENU.message }
         require(isDuplicateOrder(input.toOrderNameList())) { OrderError.DUPLICATE_MENU.message }
+    }
+
+    fun validateOnlyDrink(orders: Map<String, Int>) {
+        require(orders.all { it.key.getMenu().category == PromotionController.DRINK }) { OrderError.ONLY_DRINK.message }
     }
 
     private fun isValidateOrderFormat(input: String): Boolean {

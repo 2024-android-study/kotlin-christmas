@@ -2,6 +2,7 @@ package christmas.view
 
 import camp.nextstep.edu.missionutils.Console
 import christmas.constant.ViewConst
+import christmas.extension.toOrderMap
 import christmas.validation.InputValidator
 
 class InputView {
@@ -12,10 +13,13 @@ class InputView {
         return input.toInt()
     }
 
-    fun getOrder(): String {
+    fun getOrder(): Map<String, Int> {
         println(ViewConst.INPUT_ORDER)
         val input = Console.readLine()
-        InputValidator().validateOrder(input)
-        return input
+        InputValidator().apply {
+            validateOrder(input)
+            validateOnlyDrink(input.toOrderMap())
+        }
+        return input.toOrderMap()
     }
 }

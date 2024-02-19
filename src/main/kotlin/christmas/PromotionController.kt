@@ -2,6 +2,7 @@ package christmas
 
 import christmas.constant.Badge
 import christmas.constant.ViewConst
+import christmas.extension.getMenu
 import christmas.extension.toOrderMap
 import christmas.view.InputView
 import christmas.view.OutputView
@@ -12,15 +13,15 @@ class PromotionController {
     private val calculator = PromotionCalculator()
     fun run() {
         val date = input.getDate()
-        val orders = input.getOrder().toOrderMap()
-
+        val orders = input.getOrder()
         printBenefits(date, orders)
     }
-
     private fun printBenefits(date: Int, orders: Map<String, Int>) {
         with(output) {
             val beforePrice = calculator.getBeforeOrderPrice(orders)
-            val benefitHistory = calculator.getBenefitHistory(date, orders, getGift(beforePrice))
+
+            val benefitHistory = if(beforePrice <= BENEFIT_MIN) emptyMap()
+                else calculator.getBenefitHistory(date, orders, getGift(beforePrice))
             val wholeBenefit = calculator.getWholeBenefit(benefitHistory)
 
             printOrder(date, orders)
@@ -33,7 +34,7 @@ class PromotionController {
         }
     }
     private fun getGift(price: Int): Map<String, Int> {
-        return if(price >= GIFT_MIN) mapOf(GIFT to GIFT_NUM)
+        return if(price >= GIFT_MIN) mapOf(GIFT_NAME to GIFT_NUM)
         else emptyMap()
     }
 
@@ -47,8 +48,11 @@ class PromotionController {
     }
 
     companion object {
+        const val GIFT_NAME = "샴페인"
         const val GIFT_MIN = 120000
-        const val GIFT = "샴페인"
         const val GIFT_NUM = 1
+
+        const val DRINK = "음료"
+        const val BENEFIT_MIN = 10000
     }
 }
