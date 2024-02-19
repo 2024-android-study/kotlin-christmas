@@ -16,17 +16,14 @@ class OutputView {
 
     fun printGift(gift: Map<String, Int>) {
         println(ViewConst.OUTPUT_GIFT)
-        println(
-            if(gift.isEmpty()) ViewConst.OUTPUT_NONE
-            else gift.map { "${it.key} ${it.value}개" }
-        )
+        if(gift.isEmpty()) println(ViewConst.OUTPUT_NONE)
+        else gift.map { println("${it.key} ${it.value}개") }
+
     }
     fun printBenefitHistory(benefit: Map<String, Int>){
         println(ViewConst.OUTPUT_BENEFIT_HISTORY)
-        println(
-            if(benefit.isEmpty()) ViewConst.OUTPUT_NONE
-            else benefit.map { "${it.key}: -${it.value}원" }
-        )
+        if(benefit.isEmpty()) println(ViewConst.OUTPUT_NONE)
+        else benefit.map { println("${it.key}: -${it.value}원") }
     }
     fun printWholeBenefit(benefit: Int){
         println(ViewConst.OUTPUT_WHOLE_BENEFIT.format(benefit))

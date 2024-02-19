@@ -30,21 +30,21 @@ class PromotionCalculator {
 
 
     private fun calculateChristDiscount(date: Int): Map<String, Int> {
-        return if(date > CHRIST) mapOf(CHRIST_DISCOUNT to CHRIST_DEFAULT + (CHRIST - date) * CHRIST_UNIT) else emptyMap()
+        return if(date < CHRIST) mapOf(CHRIST_DISCOUNT to CHRIST_DEFAULT + (CHRIST - date) * CHRIST_UNIT) else emptyMap()
     }
 
     private fun calculateDayDiscount(date: Int, orders: Map<String, Int>): Map<String, Int> {
         val isWeekend = date % 7 == WEEKEND_DAY_FIRST || date % 7 == WEEKEND_DAY_SECOND
-        val dayType = if (isWeekend) WEEKDAY_DISCOUNT else WEEKEND_DISCOUNT
+        val dayType = if (isWeekend) WEEKEND_DISCOUNT else WEEKDAY_DISCOUNT
         val discountCategory = if (isWeekend) MAIN else DESSERT
 
         val benefit = orders.entries.sumOf { (menuName, amount) ->
             menuName.getMenu().let { menu ->
-                if (menu.category == discountCategory) DAY_BENEFIT * amount else return emptyMap()
+                if (menu.category == discountCategory) DAY_BENEFIT * amount else 0
             }
         }
 
-        return mapOf(dayType to benefit)
+        return if (benefit > 0) mapOf(dayType to benefit) else emptyMap()
     }
 
 

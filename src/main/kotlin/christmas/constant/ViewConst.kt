@@ -9,7 +9,7 @@ object ViewConst {
     const val OUTPUT_GIFT = "\n<증정 메뉴>"
     const val OUTPUT_BENEFIT_HISTORY="\n<혜택 내역>"
     const val OUTPUT_WHOLE_BENEFIT="\n<총혜택 금액>\n-%d원"
-    const val OUTPUT_PRICE_AFTER="\n<할인 후 예상 결재 금역>\n%d원"
+    const val OUTPUT_PRICE_AFTER="\n<할인 후 예상 결제 금액>\n%d원"
     const val OUTPUT_BADGE="\n<12월 이벤트 배지>\n%s"
 
     const val OUTPUT_NONE = "없음"
