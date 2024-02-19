@@ -13,7 +13,7 @@ class InputView {
     }
 
     fun getOrder(): String {
-        println(ViewConst.INPUT_MENU)
+        println(ViewConst.INPUT_ORDER)
         val input = Console.readLine()
         InputValidator().validateOrder(input)
         return input
