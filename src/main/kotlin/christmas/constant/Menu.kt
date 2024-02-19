@@ -16,4 +16,13 @@ enum class Menu(val menuName: String, val price: Int) {
     ZERO_COLA("제로콜라", 3000),
     RED_WINE("레드와인", 60000),
     CHAMPAGNE("샴페인", 25000);
+
+
+    companion object {
+        fun isValidMenu(menuNames: List<String>): Boolean {
+            return menuNames.all { menuName ->
+                values().any { it.menuName == menuName }
+            }
+        }
+    }
 }

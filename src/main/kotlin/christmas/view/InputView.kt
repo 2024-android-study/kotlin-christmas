@@ -12,10 +12,10 @@ class InputView {
         return input.toInt()
     }
 
-    fun getMenu(): String {
-        println(ViewConst.INPUT_DATE)
+    fun getOrder(): String {
+        println(ViewConst.INPUT_MENU)
         val input = Console.readLine()
-        InputValidator().validateMenu(input)
+        InputValidator().validateOrder(input)
         return input
     }
 }
