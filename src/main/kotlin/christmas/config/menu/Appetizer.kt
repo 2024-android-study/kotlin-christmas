@@ -1,4 +1,4 @@
-package christmas.config
+package christmas.config.menu
 
 enum class Appetizer(val menuName: String, val price: Int) {
     MUSHROOM_SOUP("양송이수프", 6_000),

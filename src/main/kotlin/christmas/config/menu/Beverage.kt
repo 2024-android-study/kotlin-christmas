@@ -1,4 +1,4 @@
-package christmas.config
+package christmas.config.menu
 
 enum class Beverage(val menuName: String, val price: Int) {
     ZERO_COKE("제로콜라", 3_000),
