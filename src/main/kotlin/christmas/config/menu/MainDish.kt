@@ -1,6 +1,6 @@
 package christmas.config.menu
 
-enum class MainDish(val menuName: String, val price: Int) {
+enum class MainDish(val menuName: String, val price: Int) : Menu {
     T_BONE_STEAKS("티본스테이크", 55_000),
     BBQ_LIP("바비큐립", 54_000),
     SEAFOOD_PASTA("해산물파스타", 35_000),
