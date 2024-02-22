@@ -8,6 +8,7 @@ class ChristmasPromotion {
 
     fun run() {
         val date = inputView.readVisitDate()
-        // println("방문일자: $date")
+        val orderedMenu = inputView.readOrder()
+        println(orderedMenu)
     }
 }

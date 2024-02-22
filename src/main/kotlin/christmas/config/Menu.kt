@@ -1,5 +1,7 @@
 package christmas.config
 
+import christmas.config.error.MenuError
+
 enum class Menu(val type: MenuType, val menu: String, val price: Int) {
     // 에피타이저
     MUSHROOM_SOUP(MenuType.APPETIZER, "양송이수프",  6000),
@@ -17,4 +19,20 @@ enum class Menu(val type: MenuType, val menu: String, val price: Int) {
     ZERO_COKE(MenuType.DRINK, "제로콜라", 3000),
     RED_WINE(MenuType.DRINK, "레드와인", 60000),
     CHAMPAGNE(MenuType.DRINK, "샴페인", 25000);
+
+    fun getMenuName(): String {
+        return menu;
+    }
+
+    companion object {
+        fun findMenuByName(menuName: String): Menu? {
+            for (menu in Menu.entries) {
+                if (menu.getMenuName().equals(menuName)) {
+                    return menu
+                }
+            }
+            return null
+        }
+    }
+
 }
