@@ -6,16 +6,11 @@ import christmas.constant.DiscountConstant
 import java.time.LocalDate
 
 class EventDiscount(val day: Int) {
+
     // 평일 할인
     fun weekdayDessertDiscount(menus: List<OrderedMenu>): Int {
         if (!checkIsWeekend(day)) {
-            var discount = 0
-            for (menu in menus) {
-                if (menu.menu.type == MenuType.APPETIZER) {
-                    discount += DiscountConstant.DISCOUNT_WEEKDAY.value
-                }
-            }
-            return discount
+            return weekDiscount(menus, false)
         }
         return 0
     }
@@ -23,15 +18,22 @@ class EventDiscount(val day: Int) {
     // 주말 할인
     fun weekendMainDiscount(menus: List<OrderedMenu>): Int {
         if (checkIsWeekend(day)) {
-            var discount = 0
-            for (menu in menus) {
-                if (menu.menu.type == MenuType.MAIN) {
-                    discount += DiscountConstant.DISCOUNT_WEEKEND.value
-                }
-            }
-            return discount
+            return weekDiscount(menus, true)
         }
         return 0
+    }
+
+    fun weekDiscount(menus: List<OrderedMenu>, isWeekend: Boolean): Int {
+        var discount = 0
+        val discountValue = if (isWeekend) DiscountConstant.DISCOUNT_WEEKEND.value else DiscountConstant.DISCOUNT_WEEKDAY.value
+        val menuType = if (isWeekend) MenuType.MAIN else MenuType.APPETIZER
+
+        for (menu in menus) {
+            if (menu.menu.type == menuType) {
+                discount += discountValue
+            }
+        }
+        return discount
     }
 
     private fun checkIsWeekend(day: Int): Boolean {
