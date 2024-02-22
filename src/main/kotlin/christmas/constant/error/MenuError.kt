@@ -1,4 +1,4 @@
-package christmas.config.error
+package christmas.constant.error
 
 import christmas.config.Menu
 

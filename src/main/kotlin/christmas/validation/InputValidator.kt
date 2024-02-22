@@ -1,6 +1,6 @@
 package christmas.validation
 
-import christmas.config.error.DateError
+import christmas.constant.error.DateError
 
 object InputValidator {
     fun checkDayValidation(input: String) {

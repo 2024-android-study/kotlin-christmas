@@ -1,4 +1,4 @@
-package christmas.config.error
+package christmas.constant.error
 
 enum class CommonError(message: String) {
     INVALID_INPUT_NUM("[ERROR] 숫자를 입력해 주세요.");

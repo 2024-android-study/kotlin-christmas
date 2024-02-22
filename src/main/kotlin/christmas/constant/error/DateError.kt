@@ -1,4 +1,4 @@
-package christmas.config.error
+package christmas.constant.error
 
 enum class DateError(val message: String) {
     INVALID_INPUT("[ERROR] 날짜는 int 형식이어야 합니다. 다시 입력해 주세요."),

@@ -1,6 +1,6 @@
 package christmas.config
 
-import christmas.config.error.MenuError
+import christmas.constant.error.MenuError
 
 enum class Menu(val type: MenuType, val menu: String, val price: Int) {
     // 에피타이저

@@ -2,8 +2,8 @@ package christmas.service
 
 import christmas.config.Menu
 import christmas.config.OrderedMenu
-import christmas.config.error.CommonError
-import christmas.config.error.MenuError
+import christmas.constant.error.CommonError
+import christmas.constant.error.MenuError
 
 object Converter {
 
