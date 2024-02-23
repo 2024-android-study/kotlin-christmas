@@ -16,7 +16,7 @@ class ChristmasPromotion {
         val orderedMenus = inputView.readOrder()
         // 계산
         val totalAmount = calculateTotalAmount(orderedMenus)
-        val eventDiscount = EventDiscount(day)
+        val eventDiscount = EventDiscount(day, orderedMenus)
         // 출력
         outputView.printBenefitPreview(day)
         outputView.printMenu(orderedMenus)
