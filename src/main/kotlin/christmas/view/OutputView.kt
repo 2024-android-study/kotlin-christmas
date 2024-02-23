@@ -44,6 +44,12 @@ class OutputView {
         }
         // 증정 이벤트
         println(OUTPUT_BENEFIT.format(MSG_PRESENT_EVENT, OutputConverter.decimalAmount(presentsBenefit)))
+        println()
+    }
+
+    fun printTotalBenefit(value: Int) {
+        println(MSG_TOTAL_BENEFIT)
+        println(OUTPUT_AMOUNT.format(OutputConverter.decimalAmount(value * -1)))
     }
 
     companion object {
@@ -65,5 +71,7 @@ class OutputView {
         val MSG_BENEFIT_BREAKDOWN = OutputConverter.convertToTitleFormat("혜택 내역")
         val MSG_PRESENT_EVENT = "증정 이벤트"
         const val OUTPUT_BENEFIT = "%s: -%s원"
+
+        val MSG_TOTAL_BENEFIT = OutputConverter.convertToTitleFormat("총혜택 금액")
     }
 }
