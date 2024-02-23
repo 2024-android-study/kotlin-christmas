@@ -8,5 +8,5 @@ enum class DiscountRule(val type: String, val value: Int) {
 }
 
 enum class PresentRule(val item: Menu, val value: Int) {
-    EVENT_PRESENT(Menu.CHAMPAGNE, 1);
+    EVENT_CHAMPAGNE_PRESENT(Menu.CHAMPAGNE, 1);
 }
