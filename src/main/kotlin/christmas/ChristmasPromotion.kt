@@ -1,5 +1,6 @@
 package christmas
 
+import christmas.service.EventDiscount
 import christmas.view.InputView
 
 class ChristmasPromotion {
@@ -7,8 +8,9 @@ class ChristmasPromotion {
     private val inputView = InputView()
 
     fun run() {
-        val date = inputView.readVisitDate()
+        val day = inputView.readVisitDate()
         val orderedMenu = inputView.readOrder()
         println(orderedMenu)
+        val eventDiscount = EventDiscount(day)
     }
 }
