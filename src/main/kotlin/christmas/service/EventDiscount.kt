@@ -1,8 +1,8 @@
 package christmas.service
 
+import christmas.config.EventType
 import christmas.config.MenuType
 import christmas.config.OrderedMenu
-import christmas.constant.DiscountConstant
 import java.time.LocalDate
 
 class EventDiscount(val day: Int) {
@@ -25,7 +25,7 @@ class EventDiscount(val day: Int) {
 
     fun weekDiscount(menus: List<OrderedMenu>, isWeekend: Boolean): Int {
         var discount = 0
-        val discountValue = if (isWeekend) DiscountConstant.DISCOUNT_WEEKEND.value else DiscountConstant.DISCOUNT_WEEKDAY.value
+        val discountValue = if (isWeekend) EventType.Event_WEEKEND.value else EventType.Event_WEEKDAY.value
         val menuType = if (isWeekend) MenuType.MAIN else MenuType.APPETIZER
 
         for (menu in menus) {
