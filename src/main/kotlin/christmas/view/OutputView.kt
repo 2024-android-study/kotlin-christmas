@@ -1,6 +1,6 @@
 package christmas.view
 
-import christmas.config.BenefitBreakdown
+import christmas.config.Benefit
 import christmas.config.OrderedMenu
 import christmas.config.PresentRule
 import christmas.service.OutputConverter
@@ -31,7 +31,7 @@ class OutputView {
         println()
     }
 
-    fun printBenefitList(discounts: List<BenefitBreakdown>, presentsBenefit: Int) {
+    fun printBenefitList(discounts: List<Benefit>, presentsBenefit: Int) {
         println(MSG_BENEFIT_BREAKDOWN)
 
         if (discounts.isEmpty()) {

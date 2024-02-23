@@ -6,13 +6,13 @@ import java.time.LocalDate
 
 class EventDiscount(val day: Int, val menus: List<OrderedMenu>) {
 
-    fun calculateDiscount(totalAmount: Int): List<BenefitBreakdown> {
-        val benefitList = mutableListOf<BenefitBreakdown>()
+    fun calculateDiscount(totalAmount: Int): List<Benefit> {
+        val benefitList = mutableListOf<Benefit>()
         if (totalAmount >= EventConstant.EVENT_CRITERIA_AMOUNT.value) {
             val calList = listOf(christmasDdayDiscount(), weekdayDessertDiscount(), weekendMainDiscount(), specialDiscount())
             val typeList = listOf(DiscountRule.DISCOUNT_CHRISTMAS_DDAY, DiscountRule.DISCOUNT_WEEKDAY, DiscountRule.DISCOUNT_WEEKEND, DiscountRule.DISCOUNT_SPECIAL)
             calList.forEachIndexed { index, amount ->
-                if (amount != 0) benefitList.add(BenefitBreakdown(typeList[index], calList[index]))
+                if (amount != 0) benefitList.add(Benefit(typeList[index], calList[index]))
             }
         }
         return benefitList

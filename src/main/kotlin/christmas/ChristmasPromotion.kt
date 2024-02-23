@@ -1,6 +1,6 @@
 package christmas
 
-import christmas.config.BenefitBreakdown
+import christmas.config.Benefit
 import christmas.config.OrderedMenu
 import christmas.config.PresentRule
 import christmas.service.EventDiscount
@@ -20,7 +20,8 @@ class ChristmasPromotion {
         // 계산
         val totalAmount = calculateTotalAmount(orderedMenus)
         val eventPresent = EventPresent(totalAmount).champagnePresent()
-        val discountBenefit = EventDiscount(day, orderedMenus).calculateDiscount(totalAmount)
+        val discountList = EventDiscount(day, orderedMenus).calculateDiscount(totalAmount)
+        val discountBenefit = calculateDiscountBenefit(discountList)
         val presentBenefit = calculatePresentBenefit(eventPresent)
         val totalBenefit = calculateTotalBenefits(discountBenefit, presentBenefit)
         // 출력
@@ -28,7 +29,7 @@ class ChristmasPromotion {
         outputView.printMenu(orderedMenus)
         outputView.printTotalAmount(totalAmount)
         outputView.printPresentMenu(eventPresent)
-        outputView.printBenefitList(discountBenefit, presentBenefit)
+        outputView.printBenefitList(discountList, presentBenefit)
         outputView.printTotalBenefit(totalBenefit)
     }
 
@@ -40,15 +41,19 @@ class ChristmasPromotion {
         return totalAmount
     }
 
+    private fun calculateDiscountBenefit(discounts: List<Benefit>): Int {
+        var benefit = 0
+        for (i in discounts) {
+            benefit += i.discount
+        }
+        return benefit
+    }
+
     private fun calculatePresentBenefit(presentNum: Int): Int {
         return presentNum * PresentRule.EVENT_CHAMPAGNE_PRESENT.item.price
     }
 
-    private fun calculateTotalBenefits(discounts: List<BenefitBreakdown>, presentBenefit: Int): Int {
-        var totalBenefits = presentBenefit
-        for (i in discounts) {
-            totalBenefits += i.discount
-        }
-        return totalBenefits
+    private fun calculateTotalBenefits(discountBenefit: Int, presentBenefit: Int): Int {
+        return discountBenefit + presentBenefit
     }
 }
