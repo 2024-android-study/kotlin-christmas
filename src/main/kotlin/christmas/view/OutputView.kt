@@ -7,11 +7,12 @@ import christmas.config.PresentRule
 import christmas.service.OutputConverter
 
 class OutputView {
+    // 혜택 미리보기
     fun printBenefitPreview(day: Int) {
         println(MSG_DATE_BENEFIT_PREVIEW.format(day))
         println()
     }
-
+    // 주문 메뉴
     fun printMenu(orders: List<OrderedMenu>) {
         println(MSG_ORDERED_MENU)
         for (order in orders) {
@@ -19,19 +20,19 @@ class OutputView {
         }
         println()
     }
-
+    // 할인 전 총주문 금액
     fun printTotalAmount(amount: Int) {
         println(MSG_TOTAL_AMOUNT_BEFORE_DISCOUNT)
         println(OUTPUT_AMOUNT.format(OutputConverter.decimalAmount(amount)))
         println()
     }
-
+    // 증정 메뉴
     fun printPresentMenu(num: Int) {
         println(MSG_PRESENT_MENU)
         println(findPresentOutput(num))
         println()
     }
-
+    // 혜택 내역
     fun printBenefitList(discounts: List<Benefit>, presentsBenefit: Int) {
         println(MSG_BENEFIT_BREAKDOWN)
 
@@ -48,19 +49,19 @@ class OutputView {
         println(OUTPUT_BENEFIT.format(MSG_PRESENT_EVENT, OutputConverter.decimalAmount(presentsBenefit)))
         println()
     }
-
+    // 총혜택 금액
     fun printTotalBenefit(value: Int) {
         println(MSG_TOTAL_BENEFIT)
         println(OUTPUT_AMOUNT.format(OutputConverter.decimalAmount(value * -1)))
         println()
     }
-
+    // 할인 후 예상 결제 금액
     fun printAmountAfterDiscount(totalAmount: Int, discountAmount: Int) {
         println(MSG_TOTAL_AMOUNT_AFTER_DISCOUNT)
         println(OUTPUT_AMOUNT.format(OutputConverter.decimalAmount(totalAmount - discountAmount)))
         println()
     }
-
+    // 12월 이벤트 배지
     fun printBadgeName(totalBenefit: Int) {
         println(MSG_BADGE)
         println(Badge.findBadgeByAmount(totalBenefit))
