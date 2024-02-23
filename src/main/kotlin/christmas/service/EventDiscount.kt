@@ -1,6 +1,5 @@
 package christmas.service
 
-import christmas.config.EventRule
 import christmas.config.EventType
 import christmas.config.MenuType
 import christmas.config.OrderedMenu
@@ -54,5 +53,17 @@ class EventDiscount(val day: Int) {
             6, 7 -> true // 주말
             else -> false // 주중
         }
+    }
+
+    // 특별 할인
+    fun specialDiscount(): Int {
+        if (calendarStarList.contains(day)) {
+            return (EventType.EVENT_SPECIAL.value)
+        }
+        return 0
+    }
+
+    companion object {
+        val calendarStarList = listOf(3, 10, 17, 24, 25, 31)
     }
 }
