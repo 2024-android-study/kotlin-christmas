@@ -12,7 +12,7 @@ class OutputView {
     fun printMenu(orders: List<OrderedMenu>) {
         println(MSG_ORDERED_MENU)
         for (order in orders) {
-            println(OUTPUT_ORDERED_MENU.format(order.menu.menu, order.num))
+            println(OUTPUT_ORDERED_MENU.format(order.menu.title, order.num))
         }
         println()
     }

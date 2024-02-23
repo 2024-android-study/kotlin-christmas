@@ -10,7 +10,7 @@ enum class MenuError(val message: String) {
     companion object {
         fun requireInMenu(orderedMenu: String) { // 메뉴판 안에 있는 메뉴여야 함
             val menuList = Menu.values() // 메뉴판의 메뉴들
-            require(menuList.any { it.menu.equals(orderedMenu) }) { INVALID_MENU.message + "\n" + INVALID_ORDER_IN_MENU.message}
+            require(menuList.any { it.title.equals(orderedMenu) }) { INVALID_MENU.message + "\n" + INVALID_ORDER_IN_MENU.message}
         }
 
         fun requiredOrderNum(num: Int) { // 주문하는 메뉴 개수는 1 이상이어야 함

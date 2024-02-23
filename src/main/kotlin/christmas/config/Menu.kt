@@ -1,14 +1,12 @@
 package christmas.config
 
-import christmas.constant.error.MenuError
-
-enum class Menu(val type: MenuType, val menu: String, val price: Int) {
+enum class Menu(val type: MenuType, val title: String, val price: Int) {
     // 에피타이저
     MUSHROOM_SOUP(MenuType.APPETIZER, "양송이수프",  6000),
     TAPAS(MenuType.APPETIZER, "타파스", 5500),
     CAESAR_SALAD(MenuType.APPETIZER, "시저샐러드", 8000),
     // 메인
-    T_BORN_STEAK(MenuType.MAIN, "티본스테이트", 55000),
+    T_BORN_STEAK(MenuType.MAIN, "티본스테이크", 55000),
     BARBCUE_RIBS(MenuType.MAIN, "바비큐립", 54000),
     SEAFOOD_PASTA(MenuType.MAIN, "해산물파스타", 35000),
     CHRISTMAS_PASTA(MenuType.MAIN, "크리스마스파스타", 25000),
@@ -21,7 +19,7 @@ enum class Menu(val type: MenuType, val menu: String, val price: Int) {
     CHAMPAGNE(MenuType.DRINK, "샴페인", 25000);
 
     fun getMenuName(): String {
-        return menu;
+        return title;
     }
 
     companion object {
