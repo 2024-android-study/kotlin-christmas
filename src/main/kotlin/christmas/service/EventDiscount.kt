@@ -1,16 +1,16 @@
 package christmas.service
 
-import christmas.config.EventRule
+import christmas.config.DiscountRule
 import christmas.config.MenuType
 import christmas.config.OrderedMenu
-import christmas.constant.DiscountConstant
+import christmas.constant.EventConstant
 import java.time.LocalDate
 
 class EventDiscount(val day: Int, val menus: List<OrderedMenu>) {
     // 크리스마스 할인
     fun christmasDdayDiscount(): Int {
         if (day <= 25) {
-            return (DiscountConstant.CHRISTMAS_START_AMOUNT.value + EventRule.EVENT_CHRISTMAS_DDAY.value * (day - 1))
+            return (EventConstant.CHRISTMAS_START_AMOUNT.value + DiscountRule.DISCOUNT_CHRISTMAS_DDAY.value * (day - 1))
         }
         return 0
     }
@@ -33,7 +33,7 @@ class EventDiscount(val day: Int, val menus: List<OrderedMenu>) {
 
     fun weekDiscount(isWeekend: Boolean): Int {
         var discount = 0
-        val discountValue = if (isWeekend) EventRule.EVENT_WEEKEND.value else EventRule.EVENT_WEEKDAY.value
+        val discountValue = if (isWeekend) DiscountRule.DISCOUNT_WEEKEND.value else DiscountRule.DISCOUNT_WEEKDAY.value
         val menuType = if (isWeekend) MenuType.MAIN else MenuType.APPETIZER
 
         for (menu in menus) {
@@ -58,7 +58,7 @@ class EventDiscount(val day: Int, val menus: List<OrderedMenu>) {
     // 특별 할인
     fun specialDiscount(): Int {
         if (calendarStarList.contains(day)) {
-            return (EventRule.EVENT_SPECIAL.value)
+            return (DiscountRule.DISCOUNT_SPECIAL.value)
         }
         return 0
     }
