@@ -1,5 +1,6 @@
 package christmas.view
 
+import christmas.config.Badge
 import christmas.config.Benefit
 import christmas.config.OrderedMenu
 import christmas.config.PresentRule
@@ -36,6 +37,7 @@ class OutputView {
 
         if (discounts.isEmpty()) {
             println("없음")
+            println()
             return
         }
         // 할인 이벤트
@@ -57,6 +59,11 @@ class OutputView {
         println(MSG_TOTAL_AMOUNT_AFTER_DISCOUNT)
         println(OUTPUT_AMOUNT.format(OutputConverter.decimalAmount(totalAmount - discountAmount)))
         println()
+    }
+
+    fun printBadgeName(totalBenefit: Int) {
+        println(MSG_BADGE)
+        println(Badge.findBadgeByAmount(totalBenefit))
     }
 
     companion object {
@@ -81,5 +88,6 @@ class OutputView {
 
         val MSG_TOTAL_BENEFIT = OutputConverter.convertToTitleFormat("총혜택 금액")
         val MSG_TOTAL_AMOUNT_AFTER_DISCOUNT = OutputConverter.convertToTitleFormat("할인 후 예상 결제 금액")
+        val MSG_BADGE = OutputConverter.convertToTitleFormat("12월 이벤트 배지")
     }
 }
