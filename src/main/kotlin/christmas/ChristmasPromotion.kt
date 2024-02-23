@@ -31,6 +31,7 @@ class ChristmasPromotion {
         outputView.printPresentMenu(eventPresent)
         outputView.printBenefitList(discountList, presentBenefit)
         outputView.printTotalBenefit(totalBenefit)
+        outputView.printAmountAfterDiscount(totalAmount, discountBenefit)
     }
 
     private fun calculateTotalAmount(orderedMenus: List<OrderedMenu>): Int {

@@ -50,6 +50,13 @@ class OutputView {
     fun printTotalBenefit(value: Int) {
         println(MSG_TOTAL_BENEFIT)
         println(OUTPUT_AMOUNT.format(OutputConverter.decimalAmount(value * -1)))
+        println()
+    }
+
+    fun printAmountAfterDiscount(totalAmount: Int, discountAmount: Int) {
+        println(MSG_TOTAL_AMOUNT_AFTER_DISCOUNT)
+        println(OUTPUT_AMOUNT.format(OutputConverter.decimalAmount(totalAmount - discountAmount)))
+        println()
     }
 
     companion object {
@@ -73,5 +80,6 @@ class OutputView {
         const val OUTPUT_BENEFIT = "%s: -%s원"
 
         val MSG_TOTAL_BENEFIT = OutputConverter.convertToTitleFormat("총혜택 금액")
+        val MSG_TOTAL_AMOUNT_AFTER_DISCOUNT = OutputConverter.convertToTitleFormat("할인 후 예상 결제 금액")
     }
 }
