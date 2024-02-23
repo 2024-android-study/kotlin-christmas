@@ -5,7 +5,7 @@ import christmas.constant.EventConstant
 
 class EventPresent(val totalAmount: Int) {
     fun champagnePresent(): Int {
-        if (totalAmount >= EventConstant.PRESENT_CRITERIA.value) {
+        if (totalAmount >= EventConstant.PRESENT_CRITERIA_AMOUNT.value) {
             return PresentRule.EVENT_CHAMPAGNE_PRESENT.value
         }
         return 0

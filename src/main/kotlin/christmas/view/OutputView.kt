@@ -1,6 +1,6 @@
 package christmas.view
 
-import christmas.config.Menu
+import christmas.config.BenefitBreakdown
 import christmas.config.OrderedMenu
 import christmas.config.PresentRule
 import christmas.service.OutputConverter
@@ -31,6 +31,21 @@ class OutputView {
         println()
     }
 
+    fun printBenefitList(discounts: List<BenefitBreakdown>, presentsBenefit: Int) {
+        println(MSG_BENEFIT_BREAKDOWN)
+
+        if (discounts.isEmpty()) {
+            println("없음")
+            return
+        }
+        // 할인 이벤트
+        for (benefit in discounts) {
+            println(OUTPUT_BENEFIT.format(benefit.type.title, OutputConverter.decimalAmount(benefit.discount)))
+        }
+        // 증정 이벤트
+        println(OUTPUT_BENEFIT.format(MSG_PRESENT_EVENT, OutputConverter.decimalAmount(presentsBenefit)))
+    }
+
     companion object {
         const val MSG_DATE_BENEFIT_PREVIEW = "12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!"
 
@@ -46,5 +61,9 @@ class OutputView {
             return if (num == 0) OUTPUT_EMPTY
             else OUTPUT_ORDERED_MENU.format(PresentRule.EVENT_CHAMPAGNE_PRESENT.item.title, num)
         }
+
+        val MSG_BENEFIT_BREAKDOWN = OutputConverter.convertToTitleFormat("혜택 내역")
+        val MSG_PRESENT_EVENT = "증정 이벤트"
+        const val OUTPUT_BENEFIT = "%s: -%s원"
     }
 }
