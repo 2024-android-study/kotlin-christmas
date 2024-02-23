@@ -2,7 +2,7 @@ package christmas.view
 
 import camp.nextstep.edu.missionutils.Console
 import christmas.config.OrderedMenu
-import christmas.service.Converter
+import christmas.service.InputConverter
 import christmas.validation.InputValidator
 
 class InputView {
@@ -26,7 +26,7 @@ class InputView {
             try {
                 println(INPUT_MENU_AND_NUM)
                 val input = Console.readLine()
-                return Converter.convertOrderToMenuList(input)
+                return InputConverter.convertOrderToMenuList(input)
             } catch (e: Exception) {
                 println(e.message)
             }

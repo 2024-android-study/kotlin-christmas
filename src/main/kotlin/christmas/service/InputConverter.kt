@@ -5,7 +5,7 @@ import christmas.config.OrderedMenu
 import christmas.constant.error.CommonError
 import christmas.constant.error.MenuError
 
-object Converter {
+object InputConverter {
 
     // (ex) 해산물파스타-2,레드와인-1,...
     private const val ORDER_DELIMINATOR = ","
